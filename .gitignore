@@ -1,0 +1,27 @@
+# build
+sim/build/
+sim/.deps/
+sim/tests/fixtures.h
+sim/tests/fixtures_edt.h
+sim/tests/test_dynamics
+sim/tests/test_env
+sim/tests/test_edt
+tracks/*/*.blob
+tracks/*/centreline.csv
+tracks/*/raceline_mintime.csv
+
+# python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+
+# training and evaluation outputs
+runs/
+pretrained/*/eval/
+
+# editors
+.vscode/
+.idea/
+*.swp
+.DS_Store

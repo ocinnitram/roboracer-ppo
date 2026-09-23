@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Build tracks/<map>/ from its occupancy map, then evaluation/layouts/<map>/.
+#   ./track <map> --direction cw|ccw [--zones N|a:b,c:d] [--vmax MPS] [--from STAGE] [--no-plot]
+set -euo pipefail
+source "$(dirname "${BASH_SOURCE[0]}")/.launcher.sh"
+exec uv run --frozen python -u -m trackgen "$@"

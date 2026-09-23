@@ -1,0 +1,36 @@
+[project]
+name = "roboracer-ppo"
+version = "0.1.0"
+description = "PPO racing policy for a 1:10 RoboRacer car, trained in a C simulator"
+requires-python = ">=3.10,<3.11"
+license = { text = "MIT (trackgen/stages/raceline.py, mintime.py: LGPL-3.0)" }
+dependencies = [
+    "numpy==1.22.0",
+    "scipy==1.9.3",
+    "torch==1.13.1",
+    "pyyaml>=6",
+    "pydantic>=2",
+    "pillow>=9",
+    "matplotlib==3.5.3",
+    "pandas==1.5.3",
+    "scikit-image==0.19.3",
+    "quadprog>=0.1.11",
+    "casadi>=3.8.0",
+    "wandb",
+]
+
+[dependency-groups]
+dev = ["pytest>=7"]
+
+[tool.uv]
+default-groups = ["dev"]
+package = false
+
+# CPU-only torch: the PyPI wheel pulls ~1.7 GB of unused CUDA libraries.
+[tool.uv.sources]
+torch = { index = "pytorch-cpu" }
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true

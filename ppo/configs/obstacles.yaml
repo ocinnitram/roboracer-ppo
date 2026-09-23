@@ -1,0 +1,40 @@
+# Two random obstacles per layout from step 0, 10M steps: ./train obstacles
+ppo:
+  batch_size: 1024
+  rollout: 16384
+  clip: 0.15703992142051454
+  c2_i: 0.006
+  c2_f: 0.0005
+  gae_lambda: 0.9167085614832758
+  gamma: 0.995
+  alpha: 0.000643602581855362
+  log_std_i: -1.1948138234446586
+  n_epochs: 6
+  normalise_advantages: false
+  target_kl: 0.05
+  c1: 0.5
+  hidden_size: 512
+  r_progress: 50.0
+  r_collision: -10.0
+  r_lap: 40.0
+  caps_lambda_t: 0.360878557301988
+  caps_lambda_s: 0.10210922064696584
+  caps_lambda_t_v: 0.2
+  caps_lambda_s_v: 0.4
+  caps_sigma_s: 0.05
+
+track:
+  map: lab-20260906
+
+training:
+  run_name: obstacles
+  steps: 10_000_000
+  ckpt_interval: 1_000_000
+  eval_interval: 100_000
+  patience_evals: 200
+  layout_switch: episode
+  sim2real: true
+  num_laps: 2
+
+obstacles:
+  n_obstacles: 2

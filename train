@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Train a policy.   ./train [empty|obstacles|<config.yaml>] [--track MAP] [--seed N] [--steps N] [--name NAME] [--layout-switch episode|complete] [--wandb]
+set -euo pipefail
+source "$(dirname "${BASH_SOURCE[0]}")/.launcher.sh"
+exec uv run --frozen python -u -m ppo.train "$@"

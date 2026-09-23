@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Run the C simulator tests and pytest.   ./test
+set -euo pipefail
+source "$(dirname "${BASH_SOURCE[0]}")/.launcher.sh"
+make -C sim test
+uv run --frozen pytest -q

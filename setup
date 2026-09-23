@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Install the Python environment, build the simulator, compile track blobs.   ./setup
+set -euo pipefail
+source "$(dirname "${BASH_SOURCE[0]}")/.launcher.sh"
+uv sync --frozen
+make -C sim
+for raceline in tracks/*/raceline.csv; do
+    uv run --frozen python -c "import sys; from sim.track import ensure_blob; ensure_blob(sys.argv[1])" "$(basename "$(dirname "$raceline")")"
+done

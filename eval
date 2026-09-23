@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Evaluate a trained run.   ./eval [run] [--seed N] [--checkpoint best|final|<step>] [--empty|--obstacles] [--render]
+set -euo pipefail
+source "$(dirname "${BASH_SOURCE[0]}")/.launcher.sh"
+# The raylib window is built on first use.
+if [[ " $* " == *" --render "* ]]; then
+    make -s -C sim render
+fi
+exec uv run --frozen python -u -m evaluation.cli "$@"
